@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1040" height="420" viewBox="0 0 1040 420" role="img" aria-labelledby="title desc">
   <title id="title">2026 open-source activity snapshot for Lixin Yin</title>
-  <desc id="desc">A polished contribution composition card showing 75 public GitHub contributions in 2026, including commits, pull requests, issues, and code reviews. Last updated 2026-05-22.</desc>
+  <desc id="desc">A polished contribution composition card showing 76 public GitHub contributions in 2026, including commits, pull requests, issues, and code reviews. Last updated 2026-05-22.</desc>
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#0d1117"/>
@@ -45,7 +45,7 @@
 
     <g transform="translate(0 98)">
       <rect x="0" y="0" width="154" height="92" rx="18" fill="#0f1b24" stroke="#2f414d"/>
-      <text class="number" x="20" y="52">75</text>
+      <text class="number" x="20" y="52">76</text>
       <text class="muted" x="20" y="76">contributions</text>
 
       <rect x="174" y="0" width="154" height="92" rx="18" fill="#0f1b24" stroke="#2f414d"/>
@@ -74,15 +74,15 @@
     <line class="axis" x1="0" y1="-144" x2="0" y2="144"/>
     <line class="axis" x1="-144" y1="0" x2="144" y2="0"/>
 
-    <polygon points="-88,0 0,53 3,0 0,-0" fill="url(#radarFill)" stroke="#7ee787" stroke-width="3" stroke-linejoin="round"/>
-    <circle cx="-88" cy="0" r="6" fill="#0d1117" stroke="#7ee787" stroke-width="4"/>
-    <circle cx="0" cy="53" r="6" fill="#0d1117" stroke="#7ee787" stroke-width="4"/>
+    <polygon points="-89,0 0,52 3,0 0,-0" fill="url(#radarFill)" stroke="#7ee787" stroke-width="3" stroke-linejoin="round"/>
+    <circle cx="-89" cy="0" r="6" fill="#0d1117" stroke="#7ee787" stroke-width="4"/>
+    <circle cx="0" cy="52" r="6" fill="#0d1117" stroke="#7ee787" stroke-width="4"/>
     <circle cx="3" cy="0" r="6" fill="#0d1117" stroke="#7ee787" stroke-width="4"/>
     <circle cx="0" cy="-0" r="6" fill="#0d1117" stroke="#7ee787" stroke-width="4"/>
 
-    <text class="metric" x="-198" y="-7" text-anchor="middle">61%</text>
+    <text class="metric" x="-198" y="-7" text-anchor="middle">62%</text>
     <text class="muted" x="-198" y="17" text-anchor="middle">Commits</text>
-    <text class="metric" x="0" y="179" text-anchor="middle">37%</text>
+    <text class="metric" x="0" y="179" text-anchor="middle">36%</text>
     <text class="muted" x="0" y="203" text-anchor="middle">Pull requests</text>
     <text class="metric" x="191" y="-7" text-anchor="middle">2%</text>
     <text class="muted" x="191" y="17" text-anchor="middle">Issues</text>
