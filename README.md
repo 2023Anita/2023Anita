@@ -38,7 +38,7 @@ See all Kaggle competition results: [kaggle.com/lixinyin/competitions](https://w
 
 I use GitHub to document and build practical Medical AI, clinical agent workflows, and reproducible research tools.
 
-![GitHub activity graph](https://github-readme-activity-graph.vercel.app/graph?username=2023Anita&theme=minimal&hide_border=true)
+![2026 open-source activity snapshot](./assets/open-source-activity.svg)
 
 ## Current Direction
 
