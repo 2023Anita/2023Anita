@@ -34,6 +34,12 @@ See all Kaggle competition results: [kaggle.com/lixinyin/competitions](https://w
 | [agent-token-budget](https://github.com/2023Anita/agent-token-budget) | A visual guide to token budgets and safety boundaries for AI coding agents. |
 | [med-dataset-platform](https://github.com/2023Anita/med-dataset-platform) | Tooling for medical AI dataset generation, management, and export. |
 
+## Open-Source Activity
+
+I use GitHub to document and build practical Medical AI, clinical agent workflows, and reproducible research tools.
+
+![GitHub activity graph](https://github-readme-activity-graph.vercel.app/graph?username=2023Anita&theme=minimal&hide_border=true)
+
 ## Current Direction
 
 I am especially interested in:
