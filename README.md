@@ -15,12 +15,14 @@ I work at the intersection of perioperative medicine, life-science machine learn
 
 ## International Kaggle Highlights
 
-- **Silver Medal · Stanford RNA 3D Folding**  
+- [**Silver Medal · Stanford RNA 3D Folding**](https://www.kaggle.com/certification/competitions/lixinyin/stanford-rna-3d-folding)  
   Rank **55 / 1,516 teams**, Top **3.6%**.
-- **Silver Medal · CIBMTR Post-HCT Survival Equity**  
+- [**Silver Medal · CIBMTR Post-HCT Survival Equity**](https://www.kaggle.com/certification/competitions/lixinyin/equity-post-HCT-survival-predictions)  
   Rank **83 / 3,325 teams**, Top **2.5%**.
-- **Bronze Medal · CZII CryoET Object Identification**  
+- [**Bronze Medal · CZII CryoET Object Identification**](https://www.kaggle.com/certification/competitions/lixinyin/czii-cryo-et-object-identification)  
   Rank **51 / 931 teams**, Top **5.5%**.
+
+See all Kaggle competition results: [kaggle.com/lixinyin/competitions](https://www.kaggle.com/lixinyin/competitions)
 
 ## Featured Open-Source Work
 
@@ -46,4 +48,3 @@ I am especially interested in:
 If you work on medical AI, agent frameworks, life-science ML, or clinical research tools, I am happy to discuss practical workflows, documentation, reproducible examples, and small open-source contributions.
 
 我是麻醉医生，也在持续把一线临床问题转化为可验证、可复盘、可开源的医疗 AI 与 Agent 工具。
-
