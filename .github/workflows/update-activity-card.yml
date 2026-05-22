@@ -11,6 +11,8 @@ permissions:
 jobs:
   update-activity-card:
     runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
     steps:
       - name: Check out profile repository
         uses: actions/checkout@v4
@@ -18,7 +20,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: "24"
 
       - name: Generate activity SVG
         run: node scripts/generate-activity-card.mjs
