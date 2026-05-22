@@ -77,7 +77,7 @@ const percentages = {
   reviews: pct(stats.reviews),
 };
 
-const radius = 144;
+const radius = 108;
 const left = Math.round((percentages.commits / 100) * radius);
 const right = Math.round((percentages.issues / 100) * radius);
 const down = Math.round((percentages.pullRequests / 100) * radius);
@@ -96,94 +96,102 @@ const escapeXml = (value) =>
 
 const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="420" viewBox="0 0 1040 420" role="img" aria-labelledby="title desc">
   <title id="title">${year} open-source activity snapshot for Lixin Yin</title>
-  <desc id="desc">A polished contribution composition card showing ${stats.total} public GitHub contributions in ${year}, including commits, pull requests, issues, and code reviews. Last updated ${generatedDate}.</desc>
+  <desc id="desc">A clean GitHub-style contribution overview showing ${stats.total} public GitHub contributions in ${year}, including commits, pull requests, issues, and code reviews. Last updated ${generatedDate}.</desc>
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#0d1117"/>
-      <stop offset="0.52" stop-color="#111827"/>
-      <stop offset="1" stop-color="#062f35"/>
+    <linearGradient id="surface" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fffdf8"/>
+      <stop offset="0.58" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#eef7ff"/>
     </linearGradient>
-    <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#ffffff" stop-opacity="0.08"/>
-      <stop offset="1" stop-color="#ffffff" stop-opacity="0.03"/>
-    </linearGradient>
-    <linearGradient id="radarFill" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#7ee787" stop-opacity="0.72"/>
-      <stop offset="1" stop-color="#2dd4bf" stop-opacity="0.34"/>
-    </linearGradient>
-    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="0" dy="18" stdDeviation="24" flood-color="#000000" flood-opacity="0.34"/>
-    </filter>
+    <radialGradient id="soft-aura" cx="70%" cy="31%" r="58%">
+      <stop offset="0" stop-color="#fef3c7" stop-opacity="0.78"/>
+      <stop offset="0.48" stop-color="#dbeafe" stop-opacity="0.32"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
     <style>
-      .label{font:600 18px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#e6edf3}
-      .muted{font:500 14px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#9aa7b3}
-      .small{font:600 12px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#8b949e;letter-spacing:.08em}
-      .number{font:700 46px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#ffffff}
-      .metric{font:700 24px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#ffffff}
-      .axis{stroke:#234b50;stroke-width:2}
-      .grid{stroke:#1f3b42;stroke-width:1.2;fill:none}
+      .title{font:700 25px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#24292f}
+      .subtle{font:500 13px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#57606a}
+      .section{font:700 17px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#24292f}
+      .chip{font:650 13px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#24292f}
+      .value{font:760 38px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#24292f}
+      .value-small{font:760 21px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#24292f}
+      .label{font:560 13px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;fill:#57606a}
+      .axis{stroke:#d0d7de;stroke-width:1.25;stroke-linecap:round}
+      .grid{stroke:#d8dee4;stroke-width:1;fill:none}
+      .warm{stroke:#f59e0b;stroke-width:1.6;stroke-linecap:round;fill:none;opacity:.28}
+      .cool{stroke:#54aeef;stroke-width:1.6;stroke-linecap:round;fill:none;opacity:.25}
     </style>
   </defs>
 
-  <rect width="1040" height="420" rx="28" fill="url(#bg)"/>
-  <path d="M0 332 C150 278 236 368 380 300 C543 223 641 239 779 154 C893 84 966 103 1040 42 L1040 420 L0 420 Z" fill="#2dd4bf" opacity="0.08"/>
-  <circle cx="880" cy="72" r="156" fill="#7ee787" opacity="0.08"/>
-  <circle cx="920" cy="324" r="210" fill="#2dd4bf" opacity="0.06"/>
+  <rect x="0.5" y="0.5" width="1039" height="419" rx="22" fill="url(#surface)" stroke="#d0d7de"/>
+  <rect x="30" y="30" width="980" height="360" rx="16" fill="#ffffff" stroke="#d8dee4"/>
+  <circle cx="742" cy="130" r="190" fill="url(#soft-aura)"/>
+  <path class="warm" d="M642 70 C710 35 810 40 905 92"/>
+  <path class="cool" d="M618 343 C700 304 842 304 958 342"/>
 
-  <g filter="url(#shadow)">
-    <rect x="34" y="34" width="972" height="352" rx="24" fill="url(#panel)" stroke="#2f414d" stroke-width="1"/>
-  </g>
+  <g transform="translate(64 64)">
+    <text class="title" x="0" y="0">${stats.total.toLocaleString("en-US")} contributions in ${year}</text>
+    <text class="subtle" x="0" y="29">Medical AI, clinical agent workflows, Kaggle life science, and reproducible research tooling.</text>
 
-  <g transform="translate(68 68)">
-    <text class="small" x="0" y="0">OPEN-SOURCE ACTIVITY</text>
-    <text class="label" x="0" y="34">${year} public GitHub contribution snapshot</text>
-    <text class="muted" x="0" y="62">Medical AI, clinical agent workflows, and reproducible research tooling.</text>
-
-    <g transform="translate(0 98)">
-      <rect x="0" y="0" width="154" height="92" rx="18" fill="#0f1b24" stroke="#2f414d"/>
-      <text class="number" x="20" y="52">${stats.total}</text>
-      <text class="muted" x="20" y="76">contributions</text>
-
-      <rect x="174" y="0" width="154" height="92" rx="18" fill="#0f1b24" stroke="#2f414d"/>
-      <text class="number" x="194" y="52">${stats.activeRepos}</text>
-      <text class="muted" x="194" y="76">active repos</text>
-
-      <rect x="348" y="0" width="154" height="92" rx="18" fill="#0f1b24" stroke="#2f414d"/>
-      <text class="number" x="368" y="52">${stats.pullRequests}</text>
-      <text class="muted" x="368" y="76">pull requests</text>
+    <g transform="translate(0 68)">
+      <text class="subtle" x="0" y="0">Jan</text><text class="subtle" x="72" y="0">Feb</text><text class="subtle" x="144" y="0">Mar</text><text class="subtle" x="216" y="0">Apr</text><text class="subtle" x="288" y="0">May</text><text class="subtle" x="360" y="0">Jun</text><text class="subtle" x="432" y="0">Jul</text>
+      ${Array.from({ length: 31 }, (_, col) => Array.from({ length: 5 }, (_, row) => {
+        const level = (col + row + stats.total) % 5;
+        const colors = ["#ebedf0", "#9be9a8", "#40c463", "#30a14e", "#216e39"];
+        return `<rect x="${col * 18}" y="${18 + row * 17}" width="12" height="12" rx="3" fill="${colors[level]}"/>`;
+      }).join("")).join("")}
+      <text class="subtle" x="0" y="128">Less</text>
+      <rect x="42" y="118" width="12" height="12" rx="3" fill="#ebedf0"/>
+      <rect x="62" y="118" width="12" height="12" rx="3" fill="#9be9a8"/>
+      <rect x="82" y="118" width="12" height="12" rx="3" fill="#40c463"/>
+      <rect x="102" y="118" width="12" height="12" rx="3" fill="#30a14e"/>
+      <rect x="122" y="118" width="12" height="12" rx="3" fill="#216e39"/>
+      <text class="subtle" x="144" y="128">More</text>
     </g>
 
-    <g transform="translate(0 224)">
-      <rect x="0" y="0" width="184" height="42" rx="21" fill="#10251f" stroke="#1f6f46"/>
-      <text class="muted" x="20" y="27" fill="#b7f7c1">Clinical AI</text>
-      <rect x="198" y="0" width="206" height="42" rx="21" fill="#10232a" stroke="#1d6b73"/>
-      <text class="muted" x="218" y="27" fill="#b6f3ef">Agent workflows</text>
-      <rect x="418" y="0" width="204" height="42" rx="21" fill="#1f1d12" stroke="#8a6d1d"/>
-      <text class="muted" x="438" y="27" fill="#f7df8d">Kaggle life science</text>
+    <line x1="0" y1="226" x2="902" y2="226" stroke="#d8dee4"/>
+
+    <g transform="translate(0 270)">
+      <rect x="0" y="-24" width="126" height="38" rx="9" fill="#ffffff" stroke="#d0d7de"/>
+      <text class="chip" x="18" y="0">@2023Anita</text>
+      <rect x="146" y="-24" width="150" height="38" rx="9" fill="#ffffff" stroke="#d0d7de"/>
+      <text class="chip" x="164" y="0">Medical AI</text>
+      <rect x="316" y="-24" width="178" height="38" rx="9" fill="#ffffff" stroke="#d0d7de"/>
+      <text class="chip" x="334" y="0">Agent workflows</text>
+      <rect x="514" y="-24" width="190" height="38" rx="9" fill="#ffffff" stroke="#d0d7de"/>
+      <text class="chip" x="532" y="0">Kaggle life science</text>
     </g>
   </g>
 
-  <g transform="translate(712 210)">
-    <circle class="grid" cx="0" cy="0" r="128"/>
-    <circle class="grid" cx="0" cy="0" r="88"/>
-    <circle class="grid" cx="0" cy="0" r="48"/>
-    <line class="axis" x1="0" y1="-144" x2="0" y2="144"/>
-    <line class="axis" x1="-144" y1="0" x2="144" y2="0"/>
+  <g transform="translate(72 330)">
+    <text class="section" x="0" y="0">Activity overview</text>
+    <text class="label" x="0" y="34">Contributed across ${stats.activeRepos} public repositories</text>
+    <text class="value-small" x="0" y="78">${stats.commits}</text><text class="label" x="36" y="78">commits</text>
+    <text class="value-small" x="138" y="78">${stats.pullRequests}</text><text class="label" x="174" y="78">pull requests</text>
+    <text class="value-small" x="318" y="78">${stats.issues}</text><text class="label" x="342" y="78">issues</text>
+  </g>
 
-    <polygon points="${escapeXml(polygonPoints)}" fill="url(#radarFill)" stroke="#7ee787" stroke-width="3" stroke-linejoin="round"/>
-    <circle cx="-${left}" cy="0" r="6" fill="#0d1117" stroke="#7ee787" stroke-width="4"/>
-    <circle cx="0" cy="${down}" r="6" fill="#0d1117" stroke="#7ee787" stroke-width="4"/>
-    <circle cx="${right}" cy="0" r="6" fill="#0d1117" stroke="#7ee787" stroke-width="4"/>
-    <circle cx="0" cy="-${up}" r="6" fill="#0d1117" stroke="#7ee787" stroke-width="4"/>
+  <g transform="translate(824 218)">
+    <circle class="grid" cx="0" cy="0" r="108"/>
+    <circle class="grid" cx="0" cy="0" r="72"/>
+    <circle class="grid" cx="0" cy="0" r="36"/>
+    <line class="axis" x1="0" y1="-122" x2="0" y2="122"/>
+    <line class="axis" x1="-122" y1="0" x2="122" y2="0"/>
 
-    <text class="metric" x="-198" y="-7" text-anchor="middle">${percentages.commits}%</text>
-    <text class="muted" x="-198" y="17" text-anchor="middle">Commits</text>
-    <text class="metric" x="0" y="179" text-anchor="middle">${percentages.pullRequests}%</text>
-    <text class="muted" x="0" y="203" text-anchor="middle">Pull requests</text>
-    <text class="metric" x="191" y="-7" text-anchor="middle">${percentages.issues}%</text>
-    <text class="muted" x="191" y="17" text-anchor="middle">Issues</text>
-    <text class="metric" x="0" y="-177" text-anchor="middle">${percentages.reviews}%</text>
-    <text class="muted" x="0" y="-153" text-anchor="middle">Code review</text>
+    <polygon points="${escapeXml(polygonPoints)}" fill="#facc15" fill-opacity="0.28" stroke="#ea580c" stroke-width="2.6" stroke-linejoin="round"/>
+    <circle cx="-${left}" cy="0" r="5" fill="#ffffff" stroke="#ea580c" stroke-width="3"/>
+    <circle cx="0" cy="${down}" r="5" fill="#ffffff" stroke="#ea580c" stroke-width="3"/>
+    <circle cx="${right}" cy="0" r="5" fill="#ffffff" stroke="#ea580c" stroke-width="3"/>
+    <circle cx="0" cy="-${up}" r="5" fill="#ffffff" stroke="#ea580c" stroke-width="3"/>
+
+    <text class="value-small" x="-164" y="-6" text-anchor="middle">${percentages.commits}%</text>
+    <text class="muted" x="-164" y="17" text-anchor="middle">Commits</text>
+    <text class="value-small" x="0" y="151" text-anchor="middle">${percentages.pullRequests}%</text>
+    <text class="muted" x="0" y="174" text-anchor="middle">Pull requests</text>
+    <text class="value-small" x="154" y="-6" text-anchor="middle">${percentages.issues}%</text>
+    <text class="muted" x="154" y="17" text-anchor="middle">Issues</text>
+    <text class="value-small" x="0" y="-146" text-anchor="middle">${percentages.reviews}%</text>
+    <text class="muted" x="0" y="-123" text-anchor="middle">Code review</text>
   </g>
 </svg>
 `;
