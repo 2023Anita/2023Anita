@@ -1,0 +1,39 @@
+name: Update activity card
+
+on:
+  schedule:
+    - cron: "10 1 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-activity-card:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out profile repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Generate activity SVG
+        run: node scripts/generate-activity-card.mjs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PROFILE_LOGIN: 2023Anita
+
+      - name: Commit updated activity card
+        run: |
+          if git diff --quiet -- assets/open-source-activity.svg; then
+            echo "Activity card is already up to date."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/open-source-activity.svg
+          git commit -m "Update open-source activity card"
+          git push
